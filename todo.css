@@ -1,0 +1,201 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+body, html {
+  height: 100%;
+}
+.header {
+  background-color: #127ad3;
+  height: 6%;
+}
+.content {
+  display: flex;
+  background-color: white;
+  height: 94%;
+}
+.taskList {
+  display: inline-block;
+  overflow: scroll;
+  background-color: #ffffff;
+  height: 100%;
+  width:100%;
+  margin-left: 2em; 
+}
+#menuButton {
+  height: 8%;
+  width: 10%;
+  font-size: 150%;
+  border: none;
+  background-color: white;
+  color: #127ad3;
+  text-align: left;
+  margin-left: 0.4em;
+  outline: none;
+  cursor: pointer;
+}
+.menuBar i {
+  margin-left: 0;
+  background-color: white;
+  border: none;
+  color: #127ad3;
+}
+.menuBar {
+  width: 3%;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+.newList input[type=text] {
+  width: 90%;
+  height: 100%;
+  border: none;
+}
+.newList input[type=text]:focus {
+  border: 2px solid #127ad3;
+  outline: none;
+}
+.addTasks {
+  display: flex;
+}
+.addTasks input[type=text] {
+  width: 90%;
+  height: 100%;
+  border: none;
+}
+.addTasks input[type=text]:focus {
+  border-bottom: 2px solid #127ad3;
+  outline: none;
+}
+#listTabel {
+  width: 15em;
+  height: 15em; 
+}
+#newList {
+  display: none;
+  height: 2em;
+  width: 100%;
+  margin-left: 15%;
+}
+.sideMenu {
+  display: flex;
+}
+.sideMenu a{
+  display: inline;
+  margin-left: 15%;
+  align-content: center;
+}
+.sideMenuName {
+  display: inline-block;
+  margin-left: 0.8em;
+}
+.list {
+  margin-left: 0.4em;
+  overflow: scroll;
+  width: 17em;
+}
+.list .image {
+  background: url("img/addList.png");
+  height: 100%;
+  display: inline-block;
+}
+.listName {
+  display: inline;
+  align-content: center;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-left: 15%;
+  height: 100%;
+  width: 10em;
+}
+.listName:hover {
+  background-color: #808080;
+}
+.newList {
+  float: left;
+  display: flex;
+  align-content: center;
+  height: 2em;
+}
+.icons {
+  height:1.5em;
+  width:1.7em;
+  display: block;
+  position: relative;
+}
+#sun {
+  background-image:url("img/sun.png");
+}
+.taskName {
+  display: inline;
+  align-content: center;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-left: 15%;
+  height: 100%;
+  width: 10em;
+}
+#newTask {
+  margin-left: 3em;
+  height: 2em;
+  width: 80%;
+}
+.taskDetail {
+  margin-left: 1em;
+  background-color: white;
+  width: 0%;
+  display: none;
+  height: 100%;
+  overflow: scroll;
+}
+.taskDetail h2 {
+  color: #686de8;
+}
+.taskDetail #closeStepsButton {
+  border: none;
+  background-color: white;
+  outline: none;
+  width: 12em;
+  height: 2em;
+  bottom: 1em;
+  left: 3em;
+  position: -webkit-sticky;
+  position: sticky;
+}
+.task {
+  display:flex;
+  width: 100%;
+  height: 2.5em;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+#newSteps {
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 3em;
+  background-color: white;
+}
+#newSteps input[type=text] {
+  width: 90%;
+  height: 100%;
+  border: none;
+}
+#newSteps input[type=text]:focus {
+  border-bottom: 2px solid #127ad3;
+  outline: none;
+}
+.step {
+  display:flex;
+  width: 100%;
+  height: 2.5em;
+}
+.step .removeStep {
+  border: none;
+  outline: none;
+  float: right;
+}

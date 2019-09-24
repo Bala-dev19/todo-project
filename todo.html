@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> To-Do </title>
+    <link rel="stylesheet" type="text/css" href="todo.css">
+  </head>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2> To-Do </h2>
+      </div>
+      <div class="content">
+        <div id="menuBar" class="menuBar">
+          <button name="menuButton" id="menuButton">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="list" class="list">
+            <div class="sideMenu"><img class="icons" src= "img/sun.png" /><a> My Day </a></div>
+            <br>
+            <div class="sideMenu"><img class="icons" src= "img/star.png" /><a> Important </a></div>
+            <br>
+            <div class="sideMenu"><img class="icons" src= "img/calender.svg" /><a> Planned </a></div>
+            <br>
+            <div class="sideMenu"><img class="icons" src= "img/home.png" /><a> Tasks </a></div>
+            <br>
+            <div id="listTabel"></div>  
+            </div>
+            <div class="newList"><img class="icons" src= "img/addList.png" /><input type = "text" name="newList" id="newList" placeholder="New list" /> </div>
+        </div>
+        <div id="tasks" class="taskList">
+          <h2 id="heading"> Tasks </h2>
+          <div id="taskTabel">
+          </div>
+          <div class="addTasks">
+            <input type = "hidden" name="taskIndex" id="taskIndex" value="" />
+            <img class="icons" src= "img/addList.png" />
+            <input type = "text" name="newTask" id="newTask"  placeholder="Add task" />
+          </div>
+        </div>
+        <div id="taskDetail" class="taskDetail">
+          <h1 id="stepsHeading">  </h1>
+          <div id="steps">
+          </div>
+          <input type = "hidden" name="SubTaskIndex" id="subTaskIndex" value="" />
+          <div id="newSteps"><img class="icons" src= "img/addList.png" /><input type="text" id="newStep" placeholder="Add step" /> </div>
+          <div id="commentsDiv"><textarea name="message" id="comments" rows="5" cols="40" placeholder="Add comments"></textarea></div>
+          <button name="closeStepsButton" id="closeStepsButton"> close </button>
+        </div>
+      </div>
+    <script src="todo.js"></script>
+  </body>
+</html>
