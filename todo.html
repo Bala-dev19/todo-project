@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> To-Do </title>
+    <title> To Do </title>
     <link rel="stylesheet" type="text/css" href="todo.css">
   </head>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <body>
     <div class="container">
       <div class="header">
-        <h2> To-Do </h2>
+        <h4 id="todo"> To-Do </h4>
       </div>
       <div class="content">
         <div id="menuBar" class="menuBar">
@@ -29,7 +29,7 @@
             <div class="newList"><img class="icons" src= "img/addList.png" /><input type = "text" name="newList" id="newList" placeholder="New list" /> </div>
         </div>
         <div id="tasks" class="taskList">
-          <h2 id="heading"> Tasks </h2>
+          <h2 id="heading"> Tasks... </h2>
           <div id="taskTabel">
           </div>
           <div class="addTasks">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div id="taskDetail" class="taskDetail">
-          <h1 id="stepsHeading">  </h1>
+          <div class="step"><img class="icons" id="stepIcon" src= "img/circle.svg" /><input value="" name="stepsHeading" id="stepsHeading"></h2></div>
           <div id="steps">
           </div>
           <input type = "hidden" name="SubTaskIndex" id="subTaskIndex" value="" />

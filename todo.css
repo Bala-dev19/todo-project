@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+font-family: "segoe";
+src: url("Segoe UI.woff");
+}
 .container {
   background-color: black;
   width: 100%;
@@ -9,10 +13,15 @@
 }
 body, html {
   height: 100%;
+  font-family: segoe;
 }
 .header {
   background-color: #127ad3;
   height: 6%;
+}
+#todo {
+  margin-left: 0.9em;
+  align-content: center;
 }
 .content {
   display: flex;
@@ -35,7 +44,7 @@ body, html {
   background-color: white;
   color: #127ad3;
   text-align: left;
-  margin-left: 0.4em;
+  margin-left: 0.6em;
   outline: none;
   cursor: pointer;
 }
@@ -83,15 +92,12 @@ body, html {
 }
 .sideMenu {
   display: flex;
+  margin-top: 0.3em;
 }
 .sideMenu a{
   display: inline;
   margin-left: 15%;
   align-content: center;
-}
-.sideMenuName {
-  display: inline-block;
-  margin-left: 0.8em;
 }
 .list {
   margin-left: 0.4em;
@@ -109,8 +115,7 @@ body, html {
   cursor: pointer;
   font-size: 1.1em;
   margin-left: 15%;
-  height: 100%;
-  width: 10em;
+  color: #3f5cdb;
 }
 .listName:hover {
   background-color: #808080;
@@ -120,15 +125,15 @@ body, html {
   display: flex;
   align-content: center;
   height: 2em;
+  margin-top: 0.7em;
 }
 .icons {
-  height:1.5em;
-  width:1.7em;
-  display: block;
+  height: 1.2em;
+  width: 1.1em;
+  display: inline-block;
   position: relative;
-}
-#sun {
-  background-image:url("img/sun.png");
+  margin-left: 0.6em;
+  margin-top: 0.7em;
 }
 .taskName {
   display: inline;
@@ -136,8 +141,6 @@ body, html {
   cursor: pointer;
   font-size: 1.1em;
   margin-left: 15%;
-  height: 100%;
-  width: 10em;
 }
 #newTask {
   margin-left: 3em;
@@ -172,12 +175,13 @@ body, html {
   height: 2.5em;
   border-bottom-style: solid;
   border-width: 1px;
+  border-color: #3e69e4;
 }
 #newSteps {
   display: flex;
   position: -webkit-sticky;
   position: sticky;
-  bottom: 3em;
+  bottom: 7.5em;
   background-color: white;
 }
 #newSteps input[type=text] {
@@ -186,16 +190,39 @@ body, html {
   border: none;
 }
 #newSteps input[type=text]:focus {
-  border-bottom: 2px solid #127ad3;
+  border: 2px solid #127ad3;
   outline: none;
+}
+#newStep{
+  margin-top: 0.7em;
 }
 .step {
   display:flex;
   width: 100%;
   height: 2.5em;
 }
+.step .stepName {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  width: 80%;
+}
 .step .removeStep {
   border: none;
   outline: none;
   float: right;
+}
+#stepsHeading {
+  border: none;
+  outline: none;
+}
+#heading {
+  color: #3e69e4;
+}
+#commentsDiv {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 2em;
+  background-color: white;
+  margin-left: 0.7em;
+  margin-top: 2em;
 }
