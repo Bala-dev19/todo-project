@@ -39,20 +39,21 @@ body, html {
 #menuButton {
   height: 8%;
   width: 10%;
-  font-size: 150%;
+  font-size: 100%;
   border: none;
   background-color: white;
-  color: #127ad3;
+  color: #465efc;
   text-align: left;
   margin-left: 0.6em;
   outline: none;
   cursor: pointer;
 }
 .menuBar i {
-  margin-left: 0;
+  margin-left: 0.7em;
   background-color: white;
   border: none;
   color: #127ad3;
+  width: 100%;
 }
 .menuBar {
   width: 3%;
@@ -98,6 +99,7 @@ body, html {
   display: inline;
   margin-left: 15%;
   align-content: center;
+  font-size:0.9em;
 }
 .list {
   margin-left: 0.4em;
@@ -127,13 +129,24 @@ body, html {
   height: 2em;
   margin-top: 0.7em;
 }
-.icons {
+.sideMenu i{
   height: 1.2em;
   width: 1.1em;
   display: inline-block;
   position: relative;
   margin-left: 0.6em;
-  margin-top: 0.7em;
+}
+.sideMenu span{
+ height: 2em;
+ 
+}
+.icons{
+  height: 1.2em;
+  width: 1.1em;
+  display: inline-block;
+  position: relative;
+  margin-left: 0.6em;
+  font-size: 1.1em;
 }
 .taskName {
   display: inline;
