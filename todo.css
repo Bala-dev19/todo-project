@@ -19,7 +19,7 @@ body, html {
   background-color: #127ad3;
   height: 6%;
 }
-#todo {
+.header .h4 {
   margin-left: 0.9em;
   align-content: center;
 }

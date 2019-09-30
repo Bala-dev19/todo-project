@@ -4,19 +4,19 @@
 var taskList = [];
 
 function getCreatedElement(element) {
-  return document.createElement(element);
+  return $(document.createElement(element));
 }
 
 function getDocumentElement(documentId) {
-  return document.getElementById(documentId);
+  return $(documentId);
 }
 
 //Adding onclick event to menu button to toogle.
-var menuButton = getDocumentElement("menuButton");
-menuButton.addEventListener("click", toogleMenu);
+var menuButton = getDocumentElement("#menuButton");
+menuButton.on("click", toogleMenu);
 
 //Adding onclick event to close button to close steps div.
-var closeStepsButton = getDocumentElement("closeStepsButton");
+var closeStepsButton = getDocumentElement("#closeStepsButton");
 closeStepsButton.onclick = function(e) {closeSteps()};
 
 /**
@@ -24,30 +24,29 @@ closeStepsButton.onclick = function(e) {closeSteps()};
  * As per the existing size of div , this will reduce or increase width.
  */
 function toogleMenu() {
-  var listName = document.getElementsByClassName("listName");
-  var sidemenu = document.getElementsByClassName("sideMenu");
-  if(getDocumentElement("menuBar").style.width != "20%") {
-    getDocumentElement("menuBar").style.width = "20%";
-    getDocumentElement("list").style.width = "100%";
-    getDocumentElement("tasks").style.width = "80%";  
-    getDocumentElement("newList").style.display = "block";
-    sidemenu[0].style.height = "19.19px";
+  var listName = $(".listName");
+  var sidemenu = $(".sideMenu");
+  if(getDocumentElement("#menuBar").css("width") != "20%") {
+    getDocumentElement("#menuBar").css("width" ,"20%");
+    getDocumentElement("#list").css("width" ,"100%");
+    getDocumentElement("#tasks").css("width","80%");  
+    getDocumentElement("#newList").css("display", "block");
+    sidemenu.css("height", "19.19px");
     //Displaying list names one by one.
     for(var i = 0; i < listName.length; i++) {
-      listName[i].style.display = "inline-block";
-      sidemenu[i].a.style.display = "inline";
+      listName[i].css("display" ,"inline-block");
+      sidemenu[i].a.css("display","inline");
     }
   } else {
-  
     //If already open, closing it.
-    getDocumentElement("menuBar").style.width = "3.5%";
-    getDocumentElement("tasks").style.width = "100%";
-    getDocumentElement("newList").style.display = "none";
-    sidemenu[0].style.height = "19.19px";
+    getDocumentElement("#menuBar").css("width","3.5%");
+    getDocumentElement("#tasks").css(width, "100%");
+    getDocumentElement("#newList").css("display" ,"none");
+    sidemenu.css("height", "19.19px");
     //Making list names none one by one to hide.
     for(var i = 0; i < listName.length; i++) {
-      listName[i].style.display = "none";
-      sidemenu[i].a.style.display = "none";
+      listName[i].css("display", "none");
+      sidemenu[i].a.css("display", "none");
     }
   }
 }
@@ -58,10 +57,10 @@ function toogleMenu() {
  * A taskDetails object is formed and parameters are setted,
  * and pushed into array taskList.
  */
-getDocumentElement("newList").addEventListener("keyup", function(event) {
+getDocumentElement("#newList").on("keyup", function(event) {
   event.preventDefault();
-  var listTabel = getDocumentElement("listTabel");
-  var newList = getDocumentElement("newList").value;
+  var listTabel = getDocumentElement("#listTabel");
+  var newList = getDocumentElement("#newList").val();
   if(event.keyCode === 13 && newList != "") {
     let taskDetails = {};
     let subTasks = [];
@@ -72,8 +71,8 @@ getDocumentElement("newList").addEventListener("keyup", function(event) {
     //Empty subTasks array is added to this.
     taskDetails["subTasks"] = subTasks;
     taskList.push(taskDetails);
-    getDocumentElement("heading").innerHTML = newList ;
-    getDocumentElement("newList").value = "";
+    getDocumentElement("#heading").html(newList);
+    getDocumentElement("#newList").val("");
     
     //Created list will be shown using displayList method.
     displayList();
@@ -83,26 +82,25 @@ getDocumentElement("newList").addEventListener("keyup", function(event) {
 /**
  * First listTabel div is made null, Then all taskList array are displayed
  * by iterating and creating div and adding styles and attributes to it.
- *
  */
 function displayList() {
-  var listTabel = getDocumentElement("listTabel");
-  listTabel.innerHTML = "";
+  var listTabel = getDocumentElement("#listTabel");
+  listTabel.empty();
   for(let i = 0; i < taskList.length; i++) {
     let newList = taskList[i].taskName;
     let index = taskList.indexOf(taskList[i]);
     var newRow = getCreatedElement("div");
-    newRow.setAttribute("display", "flex");
-    newRow.style.width = "100%";
-    newRow.style.height = "2.5em";
+    newRow.attr("display", "flex");
+    newRow.attr("width", "100%");
+    newRow.attr("height", "2.5em");
     var icon = getCreatedElement("img");
-    icon.setAttribute("src", "list.png");
-    icon.className += "icons";
+    icon.attr("src", "list.png");
+    icon.addClass("icons");
     newRow.appendChild(icon);
     let listName = getCreatedElement("div");
     listName.onclick = function(e) {getTasks(index)};
-    listName.className += "listName";
-    listName.innerHTML = newList;
+    listName.addClass("listName");
+    listName.html(newList);
     newRow.appendChild(listName);
     listTabel.appendChild(newRow);
   }
@@ -113,9 +111,9 @@ function displayList() {
  * Display all lists.
  */
 function getTasks(index) {
-  getDocumentElement("heading").innerHTML = taskList[index].taskName + "...";
-  getDocumentElement("taskIndex").value = index;
-  getDocumentElement("taskTabel").innerHTML = "";
+  getDocumentElement("#heading").html(taskList[index].taskName + "...");
+  getDocumentElement("#taskIndex").val(index);
+  $("#taskTabel").empty();
   let subTasks = taskList[index].subTasks;
   for(let i = 0; i < subTasks.length; i++) {
     displaySubTasks(subTasks[i]);
@@ -126,11 +124,11 @@ function getTasks(index) {
  * EventListner which adds new task to list when enter is pressed.
  *
  */
-getDocumentElement("newTask").addEventListener("keyup", function(event) {
+getDocumentElement("#newTask").on("keyup", function(event) {
   event.preventDefault();
-  var taskIndex = getDocumentElement("taskIndex").value;
-  var newTask = getDocumentElement("newTask").value;
-  var taskTabel = getDocumentElement("taskTabel");
+  var taskIndex = getDocumentElement("#taskIndex").val();
+  var newTask = getDocumentElement("#newTask").val();
+  var taskTabel = getDocumentElement("#taskTabel");
   var subTask = {};
   var steps = [];
   if (event.keyCode === 13 && newTask != "") {
@@ -147,26 +145,26 @@ getDocumentElement("newTask").addEventListener("keyup", function(event) {
  * Display all tasks created for a list.
  */
 function displaySubTasks(subTask) {
-  let taskIndex = getDocumentElement("taskIndex").value;
+  let taskIndex = getDocumentElement("#taskIndex").val();
   let index = taskList[taskIndex].subTasks.indexOf(subTask);
   let task = getCreatedElement("div");
-  task.className += "task";
+  task.addClass("task");
   let icon = getCreatedElement("img");
-  icon.setAttribute("src", "img/circle.svg");
+  icon.attr("src", "img/circle.svg");
   icon.onclick = function(e) {strikeOut(index)};
-  icon.className += "icons";
+  icon.addClass("icons");
   task.appendChild(icon);
   let taskNameDiv = getCreatedElement("div");
   taskNameDiv.onclick = function(e) {getSteps(index)};
-  taskNameDiv.className += "taskName";
+  taskNameDiv.addClass("taskName");
   if(!subTask.isActive) {
-    icon.setAttribute("src", "img/check-circle-solid.png");
-    taskNameDiv.style.textDecoration= "line-through";
+    icon.attr("src", "img/check-circle-solid.png");
+    taskNameDiv.css("textDecoration" ,"line-through");
   }
-  taskNameDiv.innerHTML = subTask.taskName;
+  taskNameDiv.html(subTask.taskName);
   task.appendChild(taskNameDiv);
   taskTabel.appendChild(task);
-  getDocumentElement("newTask").value = "";
+  getDocumentElement("#newTask").val("");
 }
 
 /**
@@ -174,43 +172,43 @@ function displaySubTasks(subTask) {
  *
  */
 function getSteps(index) {
-  if(getDocumentElement("tasks").style.width != "50%") {
-    getDocumentElement("tasks").style.width = "50%";
-    getDocumentElement("taskDetail").style.width = "30%";
-    getDocumentElement("taskDetail").style.display = "block";
+  if(getDocumentElement("#tasks").css("width") != "50%") {
+    getDocumentElement("#tasks").css("width" ,"50%");
+    getDocumentElement("#taskDetail").css("width" ,"30%");
+    getDocumentElement("#taskDetail").css("display" ,"block");
   }
-  let taskIndex = getDocumentElement("taskIndex").value;
+  let taskIndex = getDocumentElement("#taskIndex").val();
   let subTask = taskList[taskIndex].subTasks[index];
-  getDocumentElement("stepIcon").onclick = function(e) {strikeOut(index)};
-  getDocumentElement("stepsHeading").value = subTask.taskName;
+  getDocumentElement("#stepIcon").onclick = function(e) {strikeOut(index)};
+  getDocumentElement("#stepsHeading").val(subTask.taskName);
   if(!subTask.isActive) {
-    getDocumentElement("stepsHeading").style.textDecoration = "line-through";
-    getDocumentElement("stepIcon").setAttribute("src", "img/check-circle-solid.png");
+    getDocumentElement("#stepsHeading").css("textDecoration" ,"line-through");
+    getDocumentElement("#stepIcon").attr("src", "img/check-circle-solid.png");
   } else {
-    getDocumentElement("stepsHeading").style.textDecoration = "none";
-    getDocumentElement("stepIcon").setAttribute("src", "img/circle.svg");
+    getDocumentElement("#stepsHeading").css("textDecoration" ,"none");
+    getDocumentElement("#stepIcon").attr("src", "img/circle.svg");
   }
   let steps = taskList[taskIndex].subTasks[index].steps;
-  getDocumentElement("steps").innerHTML = "";
-  getDocumentElement("subTaskIndex").value = index;
+  $("#steps").empty();
+  getDocumentElement("#subTaskIndex").val(index);
   for(let i = 0; i < steps.length; i++) {
     displaySteps(steps[i],taskIndex,index);   
   }
-  getDocumentElement("comments").value = taskList[taskIndex].subTasks[index].comments; 
+  getDocumentElement("#comments").val(taskList[taskIndex].subTasks[index].comments); 
 }
 
 function closeSteps() {
-  getDocumentElement("tasks").style.width = "80%";
-  getDocumentElement("taskDetail").style.width = "0%";
-  getDocumentElement("stepsHeading").innerHTML = "";
-  getDocumentElement("taskDetail").style.display = "none";
+  getDocumentElement("#tasks").css("width", "80%");
+  getDocumentElement("#taskDetail").css("width","0%");
+  getDocumentElement("#stepsHeading").empty();
+  getDocumentElement("#taskDetail").css("display" ,"none");
 }
 
-getDocumentElement("newStep").addEventListener("keyup", function(event) {
+getDocumentElement("#newStep").on("keyup", function(event) {
   event.preventDefault();
-  var newStep = getDocumentElement("newStep").value;
-  var taskIndex = getDocumentElement("taskIndex").value;
-  var subTaskIndex = getDocumentElement("subTaskIndex").value;
+  var newStep = getDocumentElement("#newStep").val();
+  var taskIndex = getDocumentElement("#taskIndex").val();
+  var subTaskIndex = getDocumentElement("#subTaskIndex").val();
   var subTask = taskList[taskIndex].subTasks[subTaskIndex];
   var step = {};
   var steps = [];
@@ -227,34 +225,38 @@ function displaySteps(step,taskIndex,subTaskIndex) {
   let steps = taskList[taskIndex].subTasks[subTaskIndex].steps;
   let index = steps.indexOf(step);
   let stepDiv = getCreatedElement("div");
-  stepDiv.className += "step";
+  stepDiv.addClass("step");
   let icon = getCreatedElement("img");
-  icon.setAttribute("src", "img/circle.svg");
+  icon.attr("src", "img/circle.svg");
   icon.onclick = function(e) {strikeOutStep(index)};
-  icon.className += "icons";
+  icon.addClass("icons");
   stepDiv.appendChild(icon);
   let stepNameDiv = getCreatedElement("div");
-  stepNameDiv.className += "stepName";
+  stepNameDiv.addClass("stepName");
   if(!step.isActive) {
-    icon.setAttribute("src", "img/check-circle-solid.png");
-    stepNameDiv.style.textDecoration= "line-through";
+    icon.attr("src", "img/check-circle-solid.png");
+    stepNameDiv.css("textDecoration" ,"line-through");
   }
-  stepNameDiv.innerHTML = step.stepName;
+  stepNameDiv.html(step.stepName);
   stepDiv.appendChild(stepNameDiv);
   let removeButton = getCreatedElement("button");
-  removeButton.className += "removeStep";
-  removeButton.innerHTML = "X";
+  removeButton.addClass("removeStep");
+  removeButton.html("X");
   removeButton.onclick = function(e) {removeStep(index)}
   stepDiv.appendChild(removeButton);
-  getDocumentElement("steps").appendChild(stepDiv);
-  newStep.value = "";
+  getDocumentElement("#steps").appendChild(stepDiv);
+  newStep.val("");
 }
 
-getDocumentElement("comments").addEventListener("keyup", function(event) {
+function removeStep(index){
+  
+}
+
+getDocumentElement("#comments").on("keyup", function(event) {
   event.preventDefault();
-  var comments = getDocumentElement("comments").value;
-  var taskIndex = getDocumentElement("taskIndex").value;
-  var subTaskIndex = getDocumentElement("subTaskIndex").value;
+  var comments = getDocumentElement("#comments").val();
+  var taskIndex = getDocumentElement("#taskIndex").val();
+  var subTaskIndex = getDocumentElement("#subTaskIndex").val();
   var subTask = taskList[taskIndex].subTasks[subTaskIndex];
   if (event.keyCode === 13 && comments != "") {
     subTask.comments = comments;
@@ -263,7 +265,7 @@ getDocumentElement("comments").addEventListener("keyup", function(event) {
 });
 
 function strikeOut(index) {
-  var taskIndex = getDocumentElement("taskIndex").value;
+  var taskIndex = getDocumentElement("#taskIndex").val();
   let subTask = taskList[taskIndex].subTasks[index];
   if(subTask.isActive) {
     subTask.isActive = false;
@@ -274,11 +276,11 @@ function strikeOut(index) {
   getSteps(index);
 }
 
-getDocumentElement("stepsHeading").addEventListener("keyup", function(event) {
+getDocumentElement("#stepsHeading").on("keyup", function(event) {
   event.preventDefault();
-  var updatedTaskName = getDocumentElement("stepsHeading").value;
-  var taskIndex = getDocumentElement("taskIndex").value;
-  var subTaskIndex = getDocumentElement("subTaskIndex").value;
+  var updatedTaskName = getDocumentElement("#stepsHeading").val();
+  var taskIndex = getDocumentElement("#taskIndex").val();
+  var subTaskIndex = getDocumentElement("#subTaskIndex").val();
   var subTask = taskList[taskIndex].subTasks[subTaskIndex];
   if (event.keyCode === 13 && updatedTaskName != "") {
     subTask.taskName = updatedTaskName;
@@ -288,8 +290,8 @@ getDocumentElement("stepsHeading").addEventListener("keyup", function(event) {
 });
 
 function strikeOutStep(index) {
-  let taskIndex = getDocumentElement("taskIndex").value;
-  let subTaskIndex = getDocumentElement("subTaskIndex").value;
+  let taskIndex = getDocumentElement("#taskIndex").val();
+  let subTaskIndex = getDocumentElement("#subTaskIndex").val();
   let step = taskList[taskIndex].subTasks[subTaskIndex].steps[index];
   if(step.isActive) {
     step.isActive = false;
