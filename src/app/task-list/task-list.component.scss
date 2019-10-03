@@ -1,0 +1,36 @@
+*[_ngcontent-upx-c0] {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.taskList {
+    display: inline-block;
+    overflow: scroll;
+    background-color: #ffffff;
+    height: 100%;
+    width:100%;
+    margin-left: 2em; 
+}
+#heading {
+    color: #3e69e4;
+}
+.addTasks {
+    display: flex;
+}
+.addTasks input[type=text] {
+    width: 90%;
+    height: 100%;
+    border: none;
+}
+.addTasks input[type=text]:focus {
+    border-bottom: 2px solid #127ad3;
+    outline: none;
+}
+.icons{
+    height: 1.2em;
+    width: 1.1em;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.6em;
+    font-size: 1.1em;
+}

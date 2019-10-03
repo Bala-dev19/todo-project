@@ -1,0 +1,46 @@
+<div id="menuBar" class="menuBar" [ngClass] = "status ? 'menuBar menuBarOpened' : 'menuBar'">
+    <button name="menuButton" id="menuButton" (click) = "toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div id="list" class="list">
+      <div class="sideMenu">
+          <span id="sun">&#9728;</span> 
+          <a> My Day </a>
+      </div>
+      <br>
+      <div class="sideMenu">
+          <i class="fa fa-star" ></i> 
+          <a> Important </a>
+      </div>
+      <br>
+      <div class="sideMenu">
+          <i class="fa fa-calendar"></i>
+          <a> Planned </a>
+      </div>
+      <br>
+      <div class="sideMenu">
+          <i class="fa fa-user" ></i>
+          <a> Assigned to Me </a>
+      </div>
+      <br>
+      <div class="sideMenu">
+          <i class="fa fa-home" ></i>
+          <a> Tasks </a>
+      </div>
+      <br>
+      <div id="listTabel">
+            <li *ngFor="let item of tasks">
+                <div class="newList">
+                    <img class="icons" src = "/assets/img/addList.png" />
+                    <div class="listName">
+                        <span >{{item.taskName}} </span>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </div> 
+    <div class="newList">
+        <img class="icons" src= "/assets/img/addList.png" />
+        <input type = "text" name="newList" #newlist id="newList" placeholder="New list" (keyup.enter) = "addTask(newlist)"/> 
+    </div>
+</div>
