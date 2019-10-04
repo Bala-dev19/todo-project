@@ -1,0 +1,131 @@
+#menuButton {
+    height: 8%;
+    width: 10%;
+    font-size: 100%;
+    border: none;
+    background-color: white;
+    color: #465efc;
+    text-align: left;
+    margin-left: 0.6em;
+    outline: none;
+    cursor: pointer;
+  }
+  .icons{
+    height: 1.2em;
+    width: 1.1em;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.6em;
+    font-size: 1.1em;
+  }
+  .menuBar i {
+    margin-left: 0.7em;
+    background-color: white;
+    border: none;
+    color: #127ad3;
+    width: 100%;
+  }
+  .menuBar {
+    width: 2.6em;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    .list {
+      width: 2.6em;
+      .sideMenu {
+        .a{
+          display: none;
+        }
+      }
+    }
+    .newList #newList{
+      display: none;
+    }
+  }
+  .menuBarOpened {
+    width: 17em;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    .list {
+      width: 17em;
+      .sideMenu .a{
+        display: inline;
+      }
+    }
+    .newList #newList{
+      display: block;
+    }
+  }
+  .newList input[type=text] {
+    width: 90%;
+    height: 100%;
+    border: none;
+  }
+  .newList input[type=text]:focus {
+    border: 2px solid #127ad3;
+    outline: none;
+  }
+  #listTabel {
+    width: 15em;
+    height: 15em; 
+  }
+  #newList {
+    display: block;
+    height: 2em;
+    width: 100%;
+    margin-left: 15%;
+  }
+  .sideMenu {
+    display: flex;
+    margin-top: 0.3em;
+  }
+  .sideMenu a{
+    display: inline;
+    margin-left: 15%;
+    align-content: center;
+    font-size:0.9em;
+  }
+  .list {
+    margin-left: 0.4em;
+    overflow: scroll;
+    width: 17em;
+  }
+  .list .image {
+    background: url("/src/assets/img/addList.png");
+    height: 100%;
+    display: inline-block;
+  }
+  .listName {
+    display: inline;
+    align-content: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-left: 15%;
+    color: #3f5cdb;
+  }
+  .listName:hover {
+    background-color: #808080;
+  }
+  .newList {
+    float: left;
+    display: flex;
+    align-content: center;
+    height: 2em;
+    margin-top: 0.7em;
+  }
+  .sideMenu i{
+    height: 1.2em;
+    width: 1.1em;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.6em;
+  }
+  .sideMenu span{
+   height: 2em;
+  }
+  .taskName {
+    display: inline;
+    align-content: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-left: 15%;
+  }
