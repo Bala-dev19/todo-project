@@ -1,8 +1,7 @@
 .taskDetail {
     margin-left: 1em;
     background-color: white;
-    width: 0%;
-    display: none;
+    width: 97%;
     height: 100%;
     overflow: scroll;
   }
@@ -73,4 +72,13 @@
     left: 3em;
     position: -webkit-sticky;
     position: sticky;
+  }
+  .unchecked {
+    content: url("/assets/img/circle.svg")
+  }
+  .checked {
+    content: url("/assets/img/check-circle-solid.png")
+  }
+  .strickedStepName {
+    text-decoration: line-through;
   }

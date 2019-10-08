@@ -29,16 +29,14 @@
       </div>
       <br>
       <div id="listTabel">
-            <li *ngFor="let item of tasks">
-                <div class="newList">
-                    <img class="icons" src = "/assets/img/addList.png" />
-                    <div class="listName">
-                        <span >{{item.taskName}} </span>
-                    </div>
+            <div class="newTask" *ngFor="let item of tasks">
+                <img class="icons" src = "/assets/img/list.png" />
+                <div class="listName" (click)= selectTask(item);>
+                    <span>{{item.taskName}} </span>
                 </div>
-            </li>
+            </div>
         </div>
-    </div> 
+    </div>
     <div class="newList">
         <img class="icons" src= "/assets/img/addList.png" />
         <input type = "text" name="newList" #newlist id="newList" placeholder="New list" (keyup.enter) = "addTask(newlist)"/> 

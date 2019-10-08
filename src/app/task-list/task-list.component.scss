@@ -1,7 +1,6 @@
-*[_ngcontent-upx-c0] {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+:host {
+    width: 55%;
+    height: 37.5em;
 }
 .taskList {
     display: inline-block;
@@ -33,4 +32,26 @@
     position: relative;
     margin-left: 0.6em;
     font-size: 1.1em;
+}
+.unchecked {
+    content: url("/assets/img/circle.svg")
+}
+.checked {
+    content: url("/assets/img/check-circle-solid.png")
+}
+.listName {
+    display: inline;
+    align-content: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-left: 15%;
+    color: #3f5cdb;
+    text-decoration: none;
+}
+.strickedListName {
+    text-decoration: line-through;
+}
+.newTask {
+    height: 2em;
+    width: 80%;
 }

@@ -1,17 +1,23 @@
 <div id="taskDetail" class="taskDetail">
     <div class="step">
-        <img class="icons" id="stepIcon" src= "/assets/img/circle.svg" />
-        <input value="" name="stepsHeading" id="stepsHeading">
+        <img class="icons unchecked" id="stepIcon" (click)= subTaskStrick(); [class.checked] = "currentSubTask.isActive" />
+        <div contenteditable="true" id="stepsHeading" [class.strickedStepName] = "currentSubTask.isActive"></div>
     </div>
-    <div id="steps">
+    <div id="steps" class="step" *ngFor="let item of currentSubTask.steps">
+        <div class="step" *ngIf="item !== undefined">
+            <img class="icons unchecked" [class.checked] = "item.isStricked" (click)= strickOut(item); />
+            <div class="stepName" [class.strickedStepName] = "item.isStricked">
+                {{item.stepName}}
+            </div>
+            <button class="stepName" (click)= removeStep(item)> X </button>
+        </div>
     </div>
-    <input type = "hidden" name="SubTaskIndex" id="subTaskIndex" value="" />
     <div id="newSteps">
         <img class="icons" src= "/assets/img/addList.png" />
-        <input type="text" id="newStep" placeholder="Add step" /> 
+        <input type="text" id="newStep" #newStep placeholder="Add step" (keyup.enter)= "addStep(newStep)" /> 
     </div>
     <div id="commentsDiv">
-        <textarea name="message" id="comments" rows="5" cols="40" placeholder="Add comments"></textarea>
+        <textarea name="message" #comments id="comments" value="currentSubTask.comments" rows="5" cols="40" placeholder="Add comments" (keyup.enter)= "addComment(comments)"></textarea>
     </div>
     <button name="closeStepsButton" id="closeStepsButton"> close </button>
 </div>

@@ -10,7 +10,14 @@
     outline: none;
     cursor: pointer;
   }
-
+  .icons{
+    height: 1.2em;
+    width: 1.1em;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.6em;
+    font-size: 1.1em;
+  }
   .menuBar i {
     margin-left: 0.7em;
     background-color: white;
@@ -19,14 +26,34 @@
     width: 100%;
   }
   .menuBar {
-    width: 2.5em;
+    width: 2.6em;
     background-color: #f4f4f4;
     border-radius: 5px;
+    .list {
+      width: 2.6em;
+      .sideMenu {
+        .a{
+          display: none;
+        }
+      }
+    }
+    .newList #newList{
+      display: none;
+    }
   }
   .menuBarOpened {
-    width: 17em;
+    width: 15em;
     background-color: #f4f4f4;
     border-radius: 5px;
+    .list {
+      width: 15em;
+      .sideMenu .a{
+        display: inline;
+      }
+    }
+    .newList #newList{
+      display: block;
+    }
   }
   .newList input[type=text] {
     width: 90%;
@@ -39,7 +66,8 @@
   }
   #listTabel {
     width: 15em;
-    height: 15em; 
+    height: 15em;
+    overflow: scroll; 
   }
   #newList {
     display: block;
@@ -59,7 +87,6 @@
   }
   .list {
     margin-left: 0.4em;
-    overflow: scroll;
     width: 17em;
   }
   .list .image {
@@ -94,7 +121,6 @@
   }
   .sideMenu span{
    height: 2em;
-   
   }
   .taskName {
     display: inline;
@@ -102,9 +128,4 @@
     cursor: pointer;
     font-size: 1.1em;
     margin-left: 15%;
-  }
-  #newTask {
-    margin-left: 3em;
-    height: 2em;
-    width: 80%;
   }
