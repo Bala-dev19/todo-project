@@ -14,10 +14,9 @@ export class TaskDetailComponent implements OnInit {
 
   displaySubtask(subTask){
     this.currentSubTask = subTask;
-    let name = this.currentSubTask.subTaskName;
     console.log(this.currentSubTask.subTaskName);
-    var stepsHeading = document.querySelector("#stepsHeading");
-    stepsHeading.innerHTML = name;
+    let stepHeading = <HTMLInputElement>document.querySelector("#stepHeading");
+    stepHeading.value = this.currentSubTask.subTaskName;
   }
   
   addStep(newStep):void {

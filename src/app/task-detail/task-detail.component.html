@@ -1,15 +1,15 @@
 <div id="taskDetail" class="taskDetail">
     <div class="step">
         <img class="icons unchecked" id="stepIcon" (click)= subTaskStrick(); [class.checked] = "currentSubTask.isActive" />
-        <div contenteditable="true" id="stepsHeading" [class.strickedStepName] = "currentSubTask.isActive"></div>
+        <input type="text" name="stepsHeading" id="stepsHeading" [class.strickedStepName] = "currentSubTask.isActive" value="" /> 
     </div>
-    <div id="steps" class="step" *ngFor="let item of currentSubTask.steps">
-        <div class="step" *ngIf="item !== undefined">
+    <div id="steps">
+        <div class="step" *ngFor="let item of currentSubTask.steps">
             <img class="icons unchecked" [class.checked] = "item.isStricked" (click)= strickOut(item); />
             <div class="stepName" [class.strickedStepName] = "item.isStricked">
                 {{item.stepName}}
             </div>
-            <button class="stepName" (click)= removeStep(item)> X </button>
+            <button class="removeStep" (click)= removeStep(item)> X </button>
         </div>
     </div>
     <div id="newSteps">
