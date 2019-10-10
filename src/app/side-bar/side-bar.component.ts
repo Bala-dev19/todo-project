@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {tasks} from '../tasks';
 import { TaskListComponent } from '../task-list/task-list.component';
 
@@ -8,19 +8,30 @@ import { TaskListComponent } from '../task-list/task-list.component';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
+  @Input() taskListInfo;
+
   tasks = tasks;
   status:boolean = false;
-  taskList = new TaskListComponent();
   constructor() { }
 
   ngOnInit() {
     
   }
 
+  /**
+   * Changes the state of status which indicates menu bar is open or closed.
+   */
   toggleMenu():void {
     this.status = !this.status;
   }
 
+  /**
+   * Whenever the new list input box is focused and enter key is pressed,
+   * the value of input will be checked for null and proceed to create a new task 
+   * and pushed into array of tasks.
+   * 
+   * @param input - the input element used to get value for new task.
+   */
   addTask(input):void {
     let taskname = input.value;
     if("" !=  taskname) {
@@ -29,8 +40,13 @@ export class SideBarComponent implements OnInit {
       input.value = "";
     }
   }
+
+  /**
+   * Selected task will be passed to task-list component.
+   * 
+   * @param task - selected task from which subTasks to be displayed.
+   */
   selectTask(task):void {
-    console.log("came");
-    this.taskList.displayTask(task);
+    this.taskListInfo.displayTask(task);
   }
 }

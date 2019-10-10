@@ -3,8 +3,8 @@
     <h4> To-Do </h4>
   </div>
   <div class="content">
-    <app-side-bar></app-side-bar>
-    <app-task-list></app-task-list>
-    <app-task-detail></app-task-detail>
+    <app-side-bar [taskListInfo] = "taskListInfo"></app-side-bar>
+    <app-task-list #taskListInfo [taskDetailInfo] = "taskDetailInfo" ></app-task-list>
+    <app-task-detail #taskDetailInfo [taskListInfo] = "taskListInfo" ></app-task-detail>
   </div>
 </div>

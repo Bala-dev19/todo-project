@@ -1,9 +1,9 @@
 <div id="tasks" class="taskList">
-    <h2 id="heading"> Tasks... </h2>
+    <input type="text" id="heading" [(ngModel)]="currentTask.taskName" value="Tasks..." />  
     <div id="taskTabel">
         <div class="newTask" *ngFor="let item of currentTask.subTasks">
-            <img class="icons unchecked" [class.checked] = "item.isActive" (click)= strickOut(item); />
-            <div class="listName" [class.strickedListName] = "item.isActive">
+            <img class="icons unchecked" [class.checked] = "item.isStricked" (click)= strickOut(item); />
+            <div class="listName" [class.strickedListName] = "item.isStricked">
                 <span (click)="selectStep(item);"> {{item.subTaskName}} </span>
             </div>
         </div>

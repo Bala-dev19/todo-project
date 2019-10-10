@@ -1,7 +1,7 @@
 <div id="taskDetail" class="taskDetail">
     <div class="step">
-        <img class="icons unchecked" id="stepIcon" (click)= subTaskStrick(); [class.checked] = "currentSubTask.isActive" />
-        <input type="text" name="stepsHeading" id="stepsHeading" [class.strickedStepName] = "currentSubTask.isActive" value="" /> 
+        <img class="icons unchecked" id="stepIcon" (click)= subTaskStrick(); [class.checked] = "currentSubTask.isStricked" />
+        <input type="text" #stepHeading id="stepsHeading" [class.strickedStepName] = "currentSubTask.isStricked" [(ngModel)]="currentSubTask.subTaskName" /> 
     </div>
     <div id="steps">
         <div class="step" *ngFor="let item of currentSubTask.steps">
@@ -17,7 +17,8 @@
         <input type="text" id="newStep" #newStep placeholder="Add step" (keyup.enter)= "addStep(newStep)" /> 
     </div>
     <div id="commentsDiv">
-        <textarea name="message" #comments id="comments" value="currentSubTask.comments" rows="5" cols="40" placeholder="Add comments" (keyup.enter)= "addComment(comments)"></textarea>
+        <textarea name="message" #comments id="comments" value= "{{currentSubTask.comments}}" rows="5" cols="40" placeholder="Add comments" (keyup.enter)= "addComment(comments)"></textarea>
     </div>
     <button name="closeStepsButton" id="closeStepsButton"> close </button>
+    <button id="delete" (click)=deleteSubTask() > X </button>
 </div>
